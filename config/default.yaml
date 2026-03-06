@@ -1,0 +1,33 @@
+system:
+  projectile:
+    name: "Au"
+    A: 197
+    radius_fm: 6.38
+    diffuseness_fm: 0.535
+    min_distance_fm: 0.4
+
+  target:
+    name: "Au"
+    A: 197
+    radius_fm: 6.38
+    diffuseness_fm: 0.535
+    min_distance_fm: 0.4
+
+beam:
+  sqrts_gev: 200.0
+  sigma_mode: "interpolate"
+  sigma_inel_nn_mb: null
+  sigma_table_csv: "data/sigma_nn_inel.csv"
+  interpolation_space: "log_sqrt_s"
+
+simulation:
+  n_events: 200
+  b_max_fm: 20.0
+  seed: 12345
+
+output:
+  outdir: "outputs"
+  save_summary_csv: true
+  save_histograms: true
+  save_event_geometries: true
+  event_geometry_format: "jsonl"
