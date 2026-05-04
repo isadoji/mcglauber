@@ -1,0 +1,2 @@
+[console_scripts]
+mcglauber = mcglauber.cli:main
