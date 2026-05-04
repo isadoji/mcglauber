@@ -1,8 +1,8 @@
 system:
   projectile:
     name: "Au"
-    A: 197
-    radius_fm: 6.38
+    A: 197 #masa atomica 
+    radius_fm: 6.38 #radio del nucleo en fm
     diffuseness_fm: 0.535
     min_distance_fm: 0.4
 

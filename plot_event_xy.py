@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-event_id = random.randint(0, 100)   # evento que quieres visualizar
+event_id = random.randint(0, 200)   # evento que quieres visualizar
 
 
 # ================================

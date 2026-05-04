@@ -1,4 +1,3 @@
-
 # Monte Carlo Glauber Model (MCGlauber)
 
 ## Overview
@@ -45,7 +44,7 @@ Nucleon positions follow the Woods–Saxon distribution
 
 rho(r) = rho0 / (1 + exp((r - R)/a))
 
-R = nuclear radius  
+R = nuclear radius
 a = surface diffuseness
 
 ---
@@ -216,13 +215,13 @@ mcglauber --config config/default.yaml
 
 Contains one row per event:
 
-event_id  
-b_fm  
-n_part  
-n_coll  
-n_part_proj  
-n_part_targ  
-sigma_inel_nn_mb  
+event_id
+b_fm
+n_part
+n_coll
+n_part_proj
+n_part_targ
+sigma_inel_nn_mb
 sqrts_gev
 
 ---
@@ -231,10 +230,10 @@ sqrts_gev
 
 Global statistics:
 
-n_events  
-mean_b_fm  
-mean_n_part  
-mean_n_coll  
+n_events
+mean_b_fm
+mean_n_part
+mean_n_coll
 
 ---
 
@@ -242,19 +241,21 @@ mean_n_coll
 
 Each line is a JSON event containing:
 
-event_id  
-b_fm  
-n_part  
-n_coll  
+event_id
+b_fm
+n_part
+n_coll
 
-projectile_x_fm  
-projectile_y_fm  
+projectile_x_fm
+projectile_y_fm
 
-target_x_fm  
-target_y_fm  
+target_x_fm
+target_y_fm
 
-projectile_participant_mask  
+projectile_participant_mask
 target_participant_mask
+
+wich 
 
 This allows event‑by‑event geometry analysis.
 
@@ -264,12 +265,8 @@ This allows event‑by‑event geometry analysis.
 
 Typical analysis plots:
 
-1) Impact parameter vs participants  
-b vs Npart scatter plot
-
-2) Event geometry  
-x vs y scatter plot of nucleon positions
-
+1) Impact parameter vs participantsb vs Npart scatter plot
+2) Event geometryx vs y scatter plot of nucleon positions
 3) Distributions
 
 Histograms of:
@@ -312,11 +309,11 @@ Future developments may include:
 
 # 10. References
 
-Miller et al.  
-Glauber modeling in high energy nuclear collisions  
+Miller et al.
+Glauber modeling in high energy nuclear collisions
 Annual Review of Nuclear and Particle Science
 
-Loizides et al.  
+Loizides et al.
 Improved Monte Carlo Glauber model
 
 PHOBOS Collaboration documentation
