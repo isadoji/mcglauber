@@ -84,7 +84,9 @@ The transverse coordinates (x,y) define the spatial anisotropy of the collision.
 mcglauber_project/
 
 config/
-default.yaml
+default.yaml   (Au+Au, sqrt(s_NN) = 200 GeV)
+bi11.yaml       (Bi+Bi, sqrt(s_NN) = 11 GeV, NICA)
+bi11_shards/    (per-shard configs, see Section 8)
 
 data/
 sigma_nn_inel.csv
@@ -265,8 +267,12 @@ This allows event‑by‑event geometry analysis.
 
 Typical analysis plots:
 
-1) Impact parameter vs participantsb vs Npart scatter plot
-2) Event geometryx vs y scatter plot of nucleon positions
+1) Impact parameter vs participants
+b vs Npart scatter plot
+
+2) Event geometry
+x vs y scatter plot of nucleon positions
+
 3) Distributions
 
 Histograms of:
@@ -295,9 +301,58 @@ Outputs will appear in
 
 outputs/
 
+For a large N_events, simulation.py runs as a single-threaded loop (no
+built-in multiprocessing). Shard the run across cores with run_shards.sh,
+which launches one process per config/bi11_shards/shard_N.yaml (same
+physics config, different seed and outdir) and waits for all of them:
+
+./run_shards.sh
+
+Merge the per-shard outputs_bi11/shards/shard_N/events_summary.csv files
+afterwards to build the full-statistics sample.
+
 ---
 
-# 9. Possible Extensions
+# 9. NICA / Bi+Bi Example (sqrt(s_NN) = 11 GeV)
+
+config/bi11.yaml configures a Bi-209 + Bi-209 run at the NICA energy used
+by the `nica/centrality` pipeline (√s_NN = 11 GeV), to supply real
+N_part/N_coll for its MC-Glauber + NBD ancestor-model fit.
+
+Sources:
+
+- sigma_NN_inel = 30.2 mb at exactly 11 GeV: Svetlichnyi, Savenkov,
+  Iusupova, Pshenichnov, "Probing Short-Range Nucleon-Nucleon
+  Correlations by Detecting Spectator Neutrons in Collider Experiments",
+  Universe 12 (2026) 118, https://doi.org/10.3390/universe12040118
+  (GlauberMC value used for SPD/NICA simulations at this same energy).
+- Bi-209 Woods-Saxon parameters (R = 6.75 fm, a = 0.468 fm) and four
+  lower-energy sigma_NN_inel anchor points (4.5/7.7/9.46/11.5 GeV) added
+  to data/sigma_nn_inel.csv: MPD (NICA) Physics Forum slides
+  (indico.jinr.ru/event/1040), citing Loizides, Nagle, Steinberg,
+  SoftwareX 1-2 (2015) 13-18 and TGlauberMC-3.2's runglauber_v3.2.C.
+
+Run with:
+
+mcglauber --config config/bi11.yaml
+
+or, sharded across cores:
+
+./run_shards.sh
+
+Outputs appear in outputs_bi11/.
+
+Full-statistics result (N = 100,000, 10 shards x 10,000 events, merged):
+
+mean b = 13.33 fm
+mean N_part = 56.63
+mean N_coll = 105.42
+max N_part = 407 (close to 2A = 418)
+max N_coll = 1094
+
+---
+
+# 10. Possible Extensions
 
 Future developments may include:
 
@@ -309,7 +364,7 @@ Future developments may include:
 
 ---
 
-# 10. References
+# 11. References
 
 Miller et al.
 Glauber modeling in high energy nuclear collisions
@@ -319,3 +374,12 @@ Loizides et al.
 Improved Monte Carlo Glauber model
 
 PHOBOS Collaboration documentation
+
+Loizides, Nagle, Steinberg
+Improved Monte Carlo Glauber predictions for nuclear collider experiments
+SoftwareX 1-2 (2015) 13-18
+
+Svetlichnyi, Savenkov, Iusupova, Pshenichnov
+Probing Short-Range Nucleon-Nucleon Correlations by Detecting Spectator
+Neutrons in Collider Experiments
+Universe 12 (2026) 118, https://doi.org/10.3390/universe12040118
