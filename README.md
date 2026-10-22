@@ -280,7 +280,9 @@ Histograms of:
 # 7. Installation
 
 conda env create -f environment.yml
+
 conda activate mcglauber
+
 pip install -e .
 
 ---
