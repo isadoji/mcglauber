@@ -1,0 +1,36 @@
+system:
+  projectile:
+    name: "Bi"
+    A: 209 #masa atomica
+    radius_fm: 6.75 #radio del nucleo en fm (TGlauberMC-3.2 runglauber_v3.2.C, parametrizacion "Bi")
+    diffuseness_fm: 0.468
+    min_distance_fm: 0.4
+
+  target:
+    name: "Bi"
+    A: 209
+    radius_fm: 6.75
+    diffuseness_fm: 0.468
+    min_distance_fm: 0.4
+
+beam:
+  sqrts_gev: 11.0
+  # sigma_NN_inel = 30.2 mb a sqrt(s_NN)=11 GeV, valor GlauberMC publicado para
+  # condiciones NICA/SPD: Svetlichnyi et al., Universe 12 (2026) 118,
+  # https://doi.org/10.3390/universe12040118
+  sigma_mode: "fixed"
+  sigma_inel_nn_mb: 30.2
+  sigma_table_csv: "data/sigma_nn_inel.csv"
+  interpolation_space: "log_sqrt_s"
+
+simulation:
+  n_events: 200
+  b_max_fm: 20.0
+  seed: 12345
+
+output:
+  outdir: "outputs_bi11"
+  save_summary_csv: true
+  save_histograms: true
+  save_event_geometries: true
+  event_geometry_format: "jsonl"

@@ -1,0 +1,29 @@
+system:
+  projectile:
+    name: "Bi"
+    A: 209
+    radius_fm: 6.75
+    diffuseness_fm: 0.468
+    min_distance_fm: 0.4
+  target:
+    name: "Bi"
+    A: 209
+    radius_fm: 6.75
+    diffuseness_fm: 0.468
+    min_distance_fm: 0.4
+beam:
+  sqrts_gev: 11.0
+  sigma_mode: "fixed"
+  sigma_inel_nn_mb: 30.2
+  sigma_table_csv: "data/sigma_nn_inel.csv"
+  interpolation_space: "log_sqrt_s"
+simulation:
+  n_events: 10000
+  b_max_fm: 20.0
+  seed: 12347
+output:
+  outdir: "outputs_bi11/shards/shard_2"
+  save_summary_csv: true
+  save_histograms: false
+  save_event_geometries: false
+  event_geometry_format: "jsonl"
